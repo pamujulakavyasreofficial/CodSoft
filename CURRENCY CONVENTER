@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class Main {
+
+    static double getRate(String from, String to) {
+
+        if (from.equals("USD") && to.equals("INR")) return 83.5;
+        if (from.equals("INR") && to.equals("USD")) return 0.012;
+        if (from.equals("USD") && to.equals("EUR")) return 0.92;
+        if (from.equals("EUR") && to.equals("USD")) return 1.09;
+        if (from.equals("USD") && to.equals("GBP")) return 0.79;
+        if (from.equals("GBP") && to.equals("USD")) return 1.27;
+
+        return 1; // same currency
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Currencies: USD, INR, EUR, GBP");
+
+        System.out.print("Enter Base Currency: ");
+        String from = sc.next().toUpperCase();
+
+        System.out.print("Enter Target Currency: ");
+        String to = sc.next().toUpperCase();
+
+        System.out.print("Enter Amount: ");
+        double amount = sc.nextDouble();
+
+        double result = amount * getRate(from, to);
+
+        System.out.printf("Converted Amount: %.2f %s", result, to);
+
+        sc.close();
+    }
+}
